@@ -223,6 +223,18 @@ class _InputPageState extends State<InputPage> {
               final bmi = calc.getCalculatedBMI();
               final resultText = calc.getResultText();
               final resultDetails = calc.getResultDetails();
+              print(bmi);
+
+              print(resultText);
+
+              print(resultDetails);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultPage(
+                          resultText: resultText,
+                          bmiCalculatedResult: bmi,
+                          resultDetail: resultDetails)));
             },
             child: Container(
               height: 80,
