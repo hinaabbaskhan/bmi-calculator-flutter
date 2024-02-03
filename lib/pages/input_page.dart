@@ -218,6 +218,11 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+              final bmi = calc.getCalculatedBMI();
+              final resultText = calc.getResultText();
+              final resultDetails = calc.getResultDetails();
             },
             child: Container(
               height: 80,
