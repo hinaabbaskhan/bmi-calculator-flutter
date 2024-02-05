@@ -15,33 +15,68 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-                child: const Text(
-              'Your Result',
-              style: TextStyle(
-                fontSize: 50,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Your Result',
+                style: kTitleTextStyle,
               ),
-            )),
-            Expanded(
-              flex: 5,
-              child: ReusableCard(
-                myColor: inActiveCardColor,
-                cardChild: Column(
-                  children: [
-                    Text(resultText!),
-                    Text(bmiCalculatedResult!),
-                    Text(resultDetail!)
-                  ],
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: ReusableCard(
+              myColor: activeCardColour,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    resultText!.toUpperCase(),
+                    style: kResultTextStyle,
+                  ),
+                  Text(
+                    bmiCalculatedResult!,
+                    style: kBMITextStyle,
+                  ),
+                  Text(
+                    resultDetail!,
+                    textAlign: TextAlign.center,
+                    style: kBodyTextStyle,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              color: const Color(0xFFEB1455),
+              margin: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
+              width: double.infinity,
+              height: 80,
+              child: const Center(
+                child: Text(
+                  'RE-CALCULATE',
+                  style: kLargeButtonTextStyle,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
